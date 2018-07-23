@@ -1,0 +1,12 @@
+&ltscript&gt
+<br/>    q = document.getElementById('q');
+<br/>    q.value="10";<br/>
+    function m1(){
+<br/>        var q = document.getElementById('q');<br/>
+        var p = document.getElementById('p');
+<br/>        document.getElementById('k1').innerHTML=q.value*p.value;
+<br/>    }<br/>
+&lt/script&gt<br/>
+&ltinput oninput="m1()" type="number" name="q" id="q"/&gt
+&ltinput oninput="m1()" type="number" name="p" id="p"/&gt
+<br/>&lth1 id="k1"&gt<br/>Bla bla<br/>&lt/h1&gt<br/>

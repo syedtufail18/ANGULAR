@@ -1,0 +1,12 @@
+<script>
+    q = document.getElementById('q');
+    q.value="10";
+    function m1(){
+        var q = document.getElementById('q');
+        var p = document.getElementById('p');
+        document.getElementById('k1').innerHTML=q.value*p.value;
+    }
+</script>
+<input oninput="m1()" type="number" name="q" id="q"/>
+<input oninput="m1()" type="number" name="p" id="p"/>
+<h1 id="k1">Bla bla</h1>

@@ -1,0 +1,39 @@
+<script src="lib/angular/angular.min.js"></script>
+<!-- 42074701db274d53b20184b66f31f55d -->
+<style>
+    .kk{
+        background-color: #ffdddd;
+        border: #990000 groove 10px;
+        margin: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: justify;
+    }
+    .kk:hover{
+        transform: scale(1.1);
+        transition: 1s;
+    }
+</style>
+<script>
+    myApp=angular.module("myApp", []);
+    myApp.controller("Ctr", function($scope, $http){
+    var url = "https://newsapi.org/v1/articles?source=the-next-web&apiKey=f2f7a35bfcd140f4b97cc54bf7fa7235";    
+    $http.get(url).success(function(data){
+        $scope.articles=data.articles;
+    });
+    });
+</script>
+<html ng-app="myApp" > 
+    <div ng-controller="Ctr">
+        <input type="text" ng-model='si' />
+        <select ng-model="ob">
+            <option>name</option>
+            <option>rn</option>
+        </select>
+        <div class="kk" ng-repeat='s1 in articles | filter : si | orderBy:ob'>
+            <h1>{{ s1.title }}</h1>
+            <p>{{ s1.description }}</p>
+            <h3><a href="{{s1.url}}">Read More<a></h3>
+        </div>
+    </div>
+</html>

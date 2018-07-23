@@ -1,0 +1,40 @@
+&ltscript src="lib/angular/angular.min.js"&gt&lt/script&gt<br/>
+&lt!-- 42074701db274d53b20184b66f31f55d --&gt<br/>
+&ltstyle&gt<br/>
+    .kk{<br/>
+        background-color: #ffdddd;<br/>
+        border: #990000 groove 10px;<br/>
+        margin: 10px;<br/>
+        padding-left: 20px;<br/>
+        padding-right: 20px;<br/>
+        text-align: justify;<br/>
+    }<br/>
+    .kk:hover{<br/>
+        transform: scale(1.1);<br/>
+        transition: 1s;<br/>
+    }<br/>
+&lt/style&gt<br/>
+&ltscript&gt<br/>
+    myApp=angular.module("myApp", []);<br/>
+    myApp.controller("Ctr", function($scope, $http){<br/>
+    var url = "https://newsapi.org/v1/articles?source=the-next-web&ampapiKey=f2f7a35bfcd140f4b97cc54bf7fa7235";<br/>    
+    $http.get(url).success(function(data){<br/>
+        $scope.articles=data.articles;<br/>
+    });<br/>
+    });<br/>
+&lt/script&gt<br/>
+&lthtml ng-app="myApp" &gt <br/>
+    &ltdiv ng-controller="Ctr"&gt<br/>
+        &ltinput type="text" ng-model='si' /&gt<br/>
+        &ltselect ng-model="ob"&gt<br/>
+            &ltoption&gtname&lt/option&gt<br/>
+            &ltoption&gtrn&lt/option&gt<br/>
+        &lt/select&gt<br/>
+        &ltdiv class="kk" ng-repeat='s1 in articles | filter : si | orderBy:ob'&gt<br/>
+            &lth1&gt{{ s1.title }}&lt/h1&gt<br/>
+            &ltp&gt{{ s1.description }}&lt/p&gt<br/>
+            &lth3&gt&lta href="{{s1.url}}"&gtRead More&lta&gt&lt/h3&gt<br/>
+        &lt/div&gt<br/>
+    &lt/div&gt<br/>
+&lt/html&gt<br/>
+<br/>
